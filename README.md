@@ -1,4 +1,5 @@
-# react_js_clean_architecture
+# react_todo_clean_architecture
+![React Todo Demo](./Preview.gif)
 
 ## Overview
 A React JS boilerplate that makes it easy and intuitive to implement [Uncle Bob's Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) in react js. This boilerplate provides basic structure that are designed according to the Clean Architecture.
