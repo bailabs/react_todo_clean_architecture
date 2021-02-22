@@ -9,4 +9,11 @@ export class AddTodoUsecase {
     addData(todo: Todo): Promise<any> {
         return this.todoRepo.addData(todo)
     }
+
+    deleteData(todo: Todo): Promise<Todo> {
+        if (todo.completed) {
+            throw "Completed entry cannot be deleted"
+        }
+        return this.todoRepo.deleteData(todo)
+    }
 }
