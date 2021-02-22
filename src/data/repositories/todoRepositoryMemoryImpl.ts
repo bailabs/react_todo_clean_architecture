@@ -3,7 +3,7 @@ import { Todo } from "../../domain/entities/todo"
 
 export class TodoRepositoryMemoryImpl implements TodoRepository {
     private static instance: TodoRepositoryMemoryImpl
-    private todoList: Todo[] = []
+    private todoList: Todo[] = [new Todo(0, "From Memory")]
 
     public static getInstance(): TodoRepositoryMemoryImpl {
         if (!TodoRepositoryMemoryImpl.instance) {
