@@ -1,15 +1,15 @@
 import { TodoRepository } from "../../domain/repositories/todo-repository"
 import { Todo } from "../../domain/entities/todo"
 
-export class TodoRepositoryImpl implements TodoRepository {
-    private static instance: TodoRepositoryImpl
+export class TodoRepositoryMemoryImpl implements TodoRepository {
+    private static instance: TodoRepositoryMemoryImpl
     private todoList: Todo[] = []
 
-    public static getInstance(): TodoRepositoryImpl {
-        if (!TodoRepositoryImpl.instance) {
-            TodoRepositoryImpl.instance = new TodoRepositoryImpl()
+    public static getInstance(): TodoRepositoryMemoryImpl {
+        if (!TodoRepositoryMemoryImpl.instance) {
+            TodoRepositoryMemoryImpl.instance = new TodoRepositoryMemoryImpl()
         }
-        return TodoRepositoryImpl.instance
+        return TodoRepositoryMemoryImpl.instance
     }
 
     addData(todo: Todo): Promise<Todo> {
