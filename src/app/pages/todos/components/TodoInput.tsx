@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useSetRecoilState } from "recoil"
 import todosState from "app/atoms/todos"
 import errorState from "app/atoms/error"
+import { Todo } from "domain/entities/todo"
 
 export default function TodoInput() {
     const [todo, setTodo] = useState("")
@@ -16,7 +17,10 @@ export default function TodoInput() {
         if (!todo) {
             setError("Please input a value.")
         } else {
-            setTodos((data) => [...data, todo])
+            setTodos((data) => {
+                const newTodo = new Todo(-1, todo)
+                return [...data, newTodo]
+            })
             setTodo("")
             setError("")
         }

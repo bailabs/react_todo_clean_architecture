@@ -1,4 +1,4 @@
-import { TodoRepository } from "../repositories/todo-repository"
+import { TodoRepository } from "../repositories/todoRepository"
 import { Todo } from "../entities/todo"
 
 export class AddTodoUseCase {

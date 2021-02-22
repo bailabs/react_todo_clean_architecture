@@ -12,7 +12,7 @@ export default function TodoList() {
     return (
         <ul>
             {todos.map((todo, i) => (
-                <TodoDetail key={i} name={todo} />
+                <TodoDetail key={i} name={todo.name} />
             ))}
         </ul>
     )

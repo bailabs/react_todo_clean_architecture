@@ -1,4 +1,4 @@
-import { TodoRepository } from "../../domain/repositories/todo-repository"
+import { TodoRepository } from "../../domain/repositories/todoRepository"
 import { Todo } from "../../domain/entities/todo"
 
 export class TodoRepositoryMemoryImpl implements TodoRepository {
