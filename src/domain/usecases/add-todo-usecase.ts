@@ -1,7 +1,7 @@
 import { TodoRepository } from "../repositories/todo-repository"
 import { Todo } from "../entities/todo"
 
-export class AddTodoUsecase {
+export class AddTodoUseCase {
     todoRepo: TodoRepository
     constructor(todoRepo: TodoRepository) {
         this.todoRepo = todoRepo
