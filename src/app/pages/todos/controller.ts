@@ -8,7 +8,7 @@ import { DeleteTodoUseCase } from "domain/usecases/deleteTodoUsecase"
 import { CompleteTodoUseCase } from "domain/usecases/completeTodoUsecase"
 import { UncompleteTodoUseCase } from "domain/usecases/uncompleteTodoUsecase"
 
-import todosState from "app/atoms/todos"
+import { todosState } from "app/pages/todos/atoms"
 
 export default function useController() {
     const refreshState = useRecoilCallback(({ set }) => async () => {

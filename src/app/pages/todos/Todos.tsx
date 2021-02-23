@@ -1,12 +1,10 @@
 import React, { useEffect } from "react"
 import { useRecoilValue } from "recoil"
-import todosState from "app/atoms/todos"
-import errorState from "app/atoms/error"
-
 import TodoInput from "./components/TodoInput"
 import TodoList from "./components/TodoList"
 
 import useController from "./controller"
+import { todosState, errorState } from "./atoms"
 
 export default function Todos() {
     // init data
