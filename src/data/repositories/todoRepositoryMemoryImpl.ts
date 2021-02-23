@@ -13,7 +13,8 @@ export class TodoRepositoryMemoryImpl implements TodoRepository {
     }
 
     addData(todo: Todo): Promise<Todo> {
-        this.todoList.push(todo)
+        this.todoList = [...this.todoList, todo]
+        console.log(this.todoList)
         return Promise.resolve(todo)
     }
 
