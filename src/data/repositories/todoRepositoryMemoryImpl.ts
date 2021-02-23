@@ -3,7 +3,12 @@ import { Todo } from "../../domain/entities/todo"
 
 export class TodoRepositoryMemoryImpl implements TodoRepository {
     private static instance: TodoRepositoryMemoryImpl
-    private todoList: Todo[] = [new Todo(0, "From Memory")]
+    private lastId = 0
+    private todoList: Todo[] = []
+
+    private constructor() {
+        this.addData(new Todo(-1, "From Memory"))
+    }
 
     public static getInstance(): TodoRepositoryMemoryImpl {
         if (!TodoRepositoryMemoryImpl.instance) {
@@ -13,8 +18,9 @@ export class TodoRepositoryMemoryImpl implements TodoRepository {
     }
 
     addData(todo: Todo): Promise<Todo> {
+        todo.id = this.lastId
         this.todoList = [...this.todoList, todo]
-        console.log(this.todoList)
+        this.lastId = this.lastId + 1
         return Promise.resolve(todo)
     }
 
@@ -30,8 +36,8 @@ export class TodoRepositoryMemoryImpl implements TodoRepository {
     }
 
     deleteData(todo: Todo): Promise<Todo> {
-        const index = this.todoList.findIndex((findElement) => findElement.id === todo.id)
-        this.todoList.splice(index, 1)
+        const todos = this.todoList.filter((currentTodo) => currentTodo.id !== todo.id)
+        this.todoList = todos
         return Promise.resolve(todo)
     }
 }

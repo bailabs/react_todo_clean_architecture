@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { useSetRecoilState } from "recoil"
-import todosState from "app/atoms/todos"
 import errorState from "app/atoms/error"
 import { Todo } from "domain/entities/todo"
-import { addTodo } from "app/pages/todos/controller"
+import useController from "app/pages/todos/controller"
 
 export default function TodoInput() {
+    const { addTodo } = useController()
+
     const [todo, setTodo] = useState("")
-    const setTodos = useSetRecoilState(todosState)
     const setError = useSetRecoilState(errorState)
 
     function handleChange(event: any) {
@@ -18,11 +18,7 @@ export default function TodoInput() {
         if (!todo) {
             setError("Please input a value.")
         } else {
-            addTodo(new Todo(-1, todo))
-            setTodos((data) => {
-                const newTodo = new Todo(-1, todo)
-                return [...data, newTodo]
-            })
+            addTodo(todo)
             setTodo("")
             setError("")
         }

@@ -6,7 +6,8 @@ export class AddTodoUseCase {
     constructor(todoRepo: TodoRepository) {
         this.todoRepo = todoRepo
     }
-    execute(todo: Todo): Promise<any> {
-        return this.todoRepo.addData(todo)
+    execute(name: string): Promise<Todo> {
+        const newTodo = new Todo(-1, name)
+        return this.todoRepo.addData(newTodo)
     }
 }

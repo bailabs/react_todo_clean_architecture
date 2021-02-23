@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useRecoilValue } from "recoil"
 import todosState from "app/atoms/todos"
 import errorState from "app/atoms/error"
@@ -6,11 +6,14 @@ import errorState from "app/atoms/error"
 import TodoInput from "./components/TodoInput"
 import TodoList from "./components/TodoList"
 
-import { getTodos } from "./controller"
+import useController from "./controller"
 
 export default function Todos() {
-    // mount
-    getTodos()
+    // init data
+    const { refreshState } = useController()
+    useEffect(() => {
+        refreshState()
+    }, [])
 
     // state
     const todos = useRecoilValue(todosState)

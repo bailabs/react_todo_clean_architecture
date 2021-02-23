@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useRecoilState } from "recoil"
+import { useRecoilValue } from "recoil"
 import todosState from "app/atoms/todos"
+import { Todo } from "domain/entities/todo"
+import useController from "../controller"
 
 function TodoDetail({ name, onClick }: { name: string; onClick: React.MouseEventHandler<HTMLLIElement> }) {
     return (
@@ -15,15 +17,15 @@ function TodoDetail({ name, onClick }: { name: string; onClick: React.MouseEvent
 }
 
 export default function TodoList() {
-    const [todos, setTodos] = useRecoilState(todosState)
-    function handleClick(id: number) {
-        const newTodos = todos.filter((todo) => todo.id !== id)
-        setTodos(newTodos)
+    const { deleteTodo } = useController()
+    const todos = useRecoilValue(todosState)
+    function handleClick(todo: Todo) {
+        deleteTodo(todo)
     }
     return (
         <ul>
             {todos.map((todo, i) => (
-                <TodoDetail key={i} name={todo.name} onClick={() => handleClick(todo.id)} />
+                <TodoDetail key={i} name={todo.name} onClick={() => handleClick(todo)} />
             ))}
         </ul>
     )
