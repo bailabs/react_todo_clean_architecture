@@ -1,4 +1,4 @@
-import { useRecoilCallback } from "recoil"
+import { atom, useRecoilCallback } from "recoil"
 import { Todo } from "domain/entities/todo"
 
 import { TodoRepositoryMemoryImpl } from "data/repositories/todoRepositoryMemoryImpl"
@@ -8,7 +8,15 @@ import { DeleteTodoUseCase } from "domain/usecases/deleteTodoUsecase"
 import { CompleteTodoUseCase } from "domain/usecases/completeTodoUsecase"
 import { UncompleteTodoUseCase } from "domain/usecases/uncompleteTodoUsecase"
 
-import { todosState } from "app/pages/todos/atoms"
+export const todosState = atom({
+    key: "todosState",
+    default: [] as Todo[],
+})
+
+export const errorState = atom({
+    key: "errorState",
+    default: "",
+})
 
 export default function useController() {
     const refreshState = useRecoilCallback(({ set }) => async () => {

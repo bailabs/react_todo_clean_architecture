@@ -1,9 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useRecoilValue } from "recoil"
-import { todosState } from "app/pages/todos/atoms"
 import { Todo } from "domain/entities/todo"
-import useController from "../controller"
+import useController, { todosState } from "../controller"
 
 interface TodoDetailComponent {
     title: string

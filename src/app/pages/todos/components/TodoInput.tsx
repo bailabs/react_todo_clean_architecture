@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { useSetRecoilState } from "recoil"
-import { errorState } from "app/pages/todos/atoms"
-import useController from "app/pages/todos/controller"
+import useController, { errorState } from "app/pages/todos/controller"
 
 export default function TodoInput() {
     const { addTodo } = useController()

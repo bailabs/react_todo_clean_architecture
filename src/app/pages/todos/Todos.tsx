@@ -3,8 +3,7 @@ import { useRecoilValue } from "recoil"
 import TodoInput from "./components/TodoInput"
 import TodoList from "./components/TodoList"
 
-import useController from "./controller"
-import { todosState, errorState } from "./atoms"
+import useController, { todosState, errorState } from "./controller"
 
 export default function Todos() {
     // init data
