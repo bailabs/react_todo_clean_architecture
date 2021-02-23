@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { useSetRecoilState } from "recoil"
 import errorState from "app/atoms/error"
-import { Todo } from "domain/entities/todo"
 import useController from "app/pages/todos/controller"
 
 export default function TodoInput() {

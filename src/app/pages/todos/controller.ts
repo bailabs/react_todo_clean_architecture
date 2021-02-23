@@ -5,6 +5,8 @@ import { TodoRepositoryMemoryImpl } from "data/repositories/todoRepositoryMemory
 import { GetTodoUseCase } from "domain/usecases/getTodoUsecase"
 import { AddTodoUseCase } from "domain/usecases/addTodoUsecase"
 import { DeleteTodoUseCase } from "domain/usecases/deleteTodoUsecase"
+import { CompleteTodoUseCase } from "domain/usecases/completeTodoUsecase"
+import { UncompleteTodoUseCase } from "domain/usecases/uncompleteTodoUsecase"
 
 import todosState from "app/atoms/todos"
 
@@ -34,5 +36,19 @@ export default function useController() {
         return deletedTodo
     }
 
-    return { refreshState, addTodo, getTodo, deleteTodo }
+    async function completeTodo(todo: Todo) {
+        const executor = new CompleteTodoUseCase(TodoRepositoryMemoryImpl.getInstance())
+        const completedTodo = await executor.execute(todo)
+        refreshState()
+        return completedTodo
+    }
+
+    async function uncompleteTodo(todo: Todo) {
+        const executor = new UncompleteTodoUseCase(TodoRepositoryMemoryImpl.getInstance())
+        const uncompletedTodo = await executor.execute(todo)
+        refreshState()
+        return uncompletedTodo
+    }
+
+    return { refreshState, addTodo, getTodo, deleteTodo, completeTodo, uncompleteTodo }
 }

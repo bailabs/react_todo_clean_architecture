@@ -1,10 +1,10 @@
 export class Todo {
     id: number
-    name: string
+    title: string
     completed: boolean
-    constructor(id: number, name: string) {
+    constructor(id: number, title: string) {
         this.id = id
-        this.name = name
+        this.title = title
         this.completed = false
     }
 }

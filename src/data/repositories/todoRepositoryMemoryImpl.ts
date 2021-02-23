@@ -29,9 +29,8 @@ export class TodoRepositoryMemoryImpl implements TodoRepository {
     }
 
     updateData(todo: Todo): Promise<Todo> {
-        const index = this.todoList.findIndex((findElement) => findElement.id === todo.id)
-        this.todoList[index].name = todo.name
-        this.todoList[index].completed = todo.completed
+        const oldTodos = this.todoList.filter((existingTodo) => existingTodo.id !== todo.id)
+        this.todoList = [...oldTodos, todo]
         return Promise.resolve(todo)
     }
 
