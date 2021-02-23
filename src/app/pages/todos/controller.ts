@@ -12,7 +12,6 @@ import todosState from "app/atoms/todos"
 
 export default function useController() {
     const refreshState = useRecoilCallback(({ set }) => async () => {
-        console.log("recoaherao")
         const todos = await getTodo()
         set(todosState, todos)
     })
